@@ -90,20 +90,6 @@ router.put('/:id', auth, asyncHandler(async (req, res) => {
   res.json(updatedRecipe);
 }));
 
-// Delete Recipe
-router.delete('/:id', auth, asyncHandler(async (req, res) => {
-  const recipe = await Recipe.findById(req.params.id);
-  if (!recipe) return res.status(404).json({ msg: 'Recipe not found' });
-
-  if (req.user.role !== 'admin' && recipe.createdBy.toString() !== req.user.id) {
-    return res.status(403).json({ msg: 'Not authorized' });
-  }
-
-  await recipe.deleteOne();
-  res.json({ msg: 'Recipe removed' });
-}));
-
-
 
 
 
