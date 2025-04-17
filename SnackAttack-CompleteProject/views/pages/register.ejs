@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SnackAttack</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Include your CSS here -->
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Register for SnackAttack</h2>
+  <form action="/auth/register" method="POST" class="col-md-6 mx-auto">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username:</label>
+      <input type="text" name="username" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" name="email" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password:</label>
+      <input type="password" name="password" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success w-100">Register</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

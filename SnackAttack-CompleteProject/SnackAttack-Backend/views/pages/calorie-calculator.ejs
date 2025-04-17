@@ -1,0 +1,21 @@
+<%- include('../partials/navbar') %>
+
+<div class="container mt-5">
+  <h2>Meal Calorie Calculator</h2>
+  <form action="/calorie" method="POST" class="mb-4">
+    <label for="ids" class="form-label">Select Recipes (IDs comma separated):</label>
+    <input type="text" name="recipeIds" class="form-control" placeholder="e.g. 605d...,605e..." required />
+    <button class="btn btn-success mt-2">Calculate</button>
+  </form>
+
+  <% if (result) { %>
+    <h5>Total Calories: <%= result.totalCalories %></h5>
+    <ul>
+      <% result.breakdown.forEach(r => { %>
+        <li><strong><%= r.title %>:</strong> <%= r.calories %> kcal</li>
+      <% }) %>
+    </ul>
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>

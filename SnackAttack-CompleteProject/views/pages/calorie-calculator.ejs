@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SnackAttack</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Include your CSS here -->
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+
+
+<div class="container mt-5">
+  <h2>Meal Calorie Calculator</h2>
+  
+  <form id="calorieForm" class="mb-4">
+    <label for="recipeSelect" class="form-label">Select Recipes:</label>
+    <select id="recipeSelect" class="form-control" multiple required>
+      <% recipes.forEach(recipe => { %>
+        <option value="<%= recipe._id %>"><%= recipe.title %></option>
+      <% }) %>
+    </select>
+    <button type="submit" class="btn btn-success mt-2">Calculate</button>
+  </form>
+
+  <div id="resultArea" style="display:none">
+    <h5>Total Calories: <span id="totalCalories"></span></h5>
+    <ul id="breakdownList" class="list-group mt-2"></ul>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('calorieForm');
+  const resultArea = document.getElementById('resultArea');
+  const totalCaloriesSpan = document.getElementById('totalCalories');
+  const breakdownList = document.getElementById('breakdownList');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const selectedOptions = Array.from(document.getElementById('recipeSelect').selectedOptions);
+    const ids = selectedOptions.map(option => option.value);
+
+    try {
+      const res = await fetch('/api/recipes/calculate-calories', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ recipeIds: ids })
+      });
+
+      if (!res.ok) {
+        const errData = await res.json();
+        alert(errData.msg || 'Something went wrong');
+        return;
+      }
+
+      const data = await res.json();
+
+      // Update DOM
+      totalCaloriesSpan.textContent = data.totalCalories;
+      breakdownList.innerHTML = '';
+      data.breakdown.forEach(r => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        li.innerHTML = `<strong>${r.title}:</strong> ${r.calories} kcal`;
+        breakdownList.appendChild(li);
+      });
+
+      resultArea.style.display = 'block';
+    } catch (err) {
+      alert('Error calculating calories');
+      console.error(err);
+    }
+  });
+</script>
+
+<%- include('../partials/footer') %>

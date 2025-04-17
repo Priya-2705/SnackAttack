@@ -1,0 +1,121 @@
+/* ====== General Layout ====== */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main {
+    flex-grow: 1;
+  }
+  
+  .container {
+    max-width: 1200px;
+  }
+  
+  /* ====== Header & Navbar ====== */
+  .navbar {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+  
+  /* ====== Footer ====== */
+  footer {
+    background-color: #212529;
+    color: #ccc;
+    padding: 20px 0;
+    margin-top: auto;
+    font-size: 0.9rem;
+  }
+  
+  /* ====== Buttons ====== */
+  .btn-sm {
+    margin-right: 5px;
+  }
+  
+  .btn-primary,
+  .btn-success,
+  .btn-danger,
+  .btn-warning {
+    border-radius: 20px;
+  }
+  
+  /* ====== Cards ====== */
+  .card {
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* ====== Forms ====== */
+  form input,
+  form textarea,
+  form select {
+    border-radius: 10px;
+  }
+  
+  form .btn {
+    border-radius: 10px;
+    padding: 10px 20px;
+  }
+  
+  /* ====== Tables ====== */
+  table {
+    font-size: 0.95rem;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  thead {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  /* ====== Titles & Headings ====== */
+  h1, h2, h3, h4, h5 {
+    font-weight: 600;
+  }
+  
+  /* ====== Utility ====== */
+  .mt-5 { margin-top: 3rem !important; }
+  .mb-4 { margin-bottom: 1.5rem !important; }
+  .text-center { text-align: center; }
+  
+  ul {
+    padding-left: 20px;
+  }
+  
+
+  .pagination {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .page-item {
+    border: 1px solid #ccc;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+  }
+  
+  .page-item a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .page-item.active {
+    background-color: #ffc107;
+  }
+  

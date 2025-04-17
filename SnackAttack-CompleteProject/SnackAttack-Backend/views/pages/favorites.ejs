@@ -1,0 +1,23 @@
+<%- include('../partials/navbar') %>
+
+<div class="container mt-5">
+  <h2>Your Favorite Recipes</h2>
+  <div class="row">
+    <% favorites.forEach(fav => { %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><%= fav.recipe.title %></h5>
+            <p class="card-text">Category: <%= fav.recipe.category %></p>
+            <a href="/recipes/<%= fav.recipe._id %>" class="btn btn-primary btn-sm">View</a>
+            <form action="/favorites/<%= fav._id %>?_method=DELETE" method="POST" class="d-inline">
+              <button class="btn btn-danger btn-sm">Remove</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SnackAttack</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Include your CSS here -->
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+
+<div class="container mt-5">
+  <h2>Create New Recipe</h2>
+  <form action="/recipes" method="POST">
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" name="title" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <input type="text" name="category" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Ingredients (comma-separated)</label>
+      <textarea name="ingredients" class="form-control" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Directions (comma-separated steps)</label>
+      <textarea name="directions" class="form-control" required></textarea>
+    </div>
+    <h5>Nutritional Info</h5>
+    <div class="row">
+      <div class="col"><input name="calories" type="number" class="form-control" placeholder="Calories"></div>
+      <div class="col"><input name="protein" type="number" class="form-control" placeholder="Protein"></div>
+      <div class="col"><input name="carbs" type="number" class="form-control" placeholder="Carbs"></div>
+      <div class="col"><input name="fat" type="number" class="form-control" placeholder="Fat"></div>
+    </div>
+    <button class="btn btn-success mt-4">Submit Recipe</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>
