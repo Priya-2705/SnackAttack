@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SnackAttack</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Include your CSS here -->
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+<%- include('../partials/content-wrapper') %>
+
+<div class="container mt-5">
+  <h2>Add New Recipe</h2>
+  <form action="/recipes" method="POST">
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" name="title" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <input type="text" name="category" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Ingredients (comma separated)</label>
+      <input type="text" name="ingredients" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Directions (comma separated)</label>
+      <input type="text" name="directions" class="form-control">
+    </div>
+
+    <h5>Nutritional Info</h5>
+    <div class="row">
+      <div class="col-md-3 mb-3"><input type="number" name="nutritionalInfo[calories]" class="form-control" placeholder="Calories"></div>
+      <div class="col-md-3 mb-3"><input type="number" name="nutritionalInfo[protein]" class="form-control" placeholder="Protein"></div>
+      <div class="col-md-3 mb-3"><input type="number" name="nutritionalInfo[carbs]" class="form-control" placeholder="Carbs"></div>
+      <div class="col-md-3 mb-3"><input type="number" name="nutritionalInfo[fat]" class="form-control" placeholder="Fat"></div>
+    </div>
+
+    <button class="btn btn-primary">Create Recipe</button>
+  </form>
+</div>
+
+<%- include('../partials/content-wrapper-end') %>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SnackAttack</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Include your CSS here -->
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+  <%- include('../partials/content-wrapper') %>
+
+<div class="container mt-5">
+  <h2>Edit Recipe: <%= recipe.title %></h2>
+  <form action="/recipes/<%= recipe._id %>?_method=PUT" method="POST">
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" name="title" class="form-control" value="<%= recipe.title %>" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Category</label>
+      <input type="text" name="category" class="form-control" value="<%= recipe.category %>" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Ingredients</label>
+      <textarea name="ingredients" class="form-control"><%= recipe.ingredients.join(', ') %></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Directions</label>
+      <textarea name="directions" class="form-control"><%= recipe.directions.join(', ') %></textarea>
+    </div>
+    <h5>Nutritional Info</h5>
+    <div class="row">
+      <div class="col"><input name="nutritionalInfo.calories" type="number" class="form-control" value="<%= recipe.nutritionalInfo.calories %>"></div>
+      <div class="col"><input name="nutritionalInfo.protein" type="number" class="form-control" value="<%= recipe.nutritionalInfo.protein %>"></div>
+      <div class="col"><input name="nutritionalInfo.carbs" type="number" class="form-control" value="<%= recipe.nutritionalInfo.carbs %>"></div>
+      <div class="col"><input name="nutritionalInfo.fat" type="number" class="form-control" value="<%= recipe.nutritionalInfo.fat %>"></div>
+    </div>
+    <button class="btn btn-primary mt-4">Update Recipe</button>
+  </form>
+</div>
+
+<%- include('../partials/content-wrapper-end') %>
+
+<%- include('../partials/footer') %>

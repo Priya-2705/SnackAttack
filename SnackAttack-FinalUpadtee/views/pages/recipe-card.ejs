@@ -1,0 +1,23 @@
+<div class="recipe-card">
+    <div class="card-image">
+      <% if (recipe.imageUrl) { %>
+        <img src="<%= recipe.imageUrl %>" alt="<%= recipe.title %>">
+      <% } else { %>
+        <div class="image-placeholder">
+          <i class="fas fa-utensils"></i>
+        </div>
+      <% } %>
+    </div>
+    <div class="card-content">
+      <h3><%= recipe.title %></h3>
+      <div class="meta">
+        <span class="calories">
+          <i class="fas fa-fire"></i>
+          <%= recipe.nutritionalInfo.calories || 0 %> kcal
+        </span>
+      </div>
+      <a href="/recipes/<%= recipe._id %>" class="btn btn-primary">
+        View Recipe <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>

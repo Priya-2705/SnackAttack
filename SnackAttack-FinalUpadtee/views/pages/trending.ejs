@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SnackAttack</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Include your CSS here -->
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+  <%- include('../partials/content-wrapper') %>
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">🔥 Trending Recipes</h2>
+  <div class="row">
+    <% trendingRecipes.forEach(recipe => { %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><%= recipe.title %></h5>
+            <p class="card-text">Category: <%= recipe.category %></p>
+            <p class="card-text">
+              Favorites: <%= recipe.favoritesCount %><br>
+              Reviews: <%= recipe.reviewsCount %><br>
+              Avg Rating: <%= recipe.avgRating.toFixed(1) %>
+            </p>
+            <a href="/recipes/<%= recipe._id %>" class="btn btn-primary btn-sm">View Recipe</a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<%- include('../partials/content-wrapper-end') %>
+<%- include('../partials/footer') %>
